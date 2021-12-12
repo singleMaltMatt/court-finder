@@ -1,6 +1,7 @@
 /* GENERAL */
 html {
     box-sizing: border-box;
+    background-color: #34495e;
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -17,13 +18,23 @@ html {
     visibility: hidden;
 }
 
+/* HEADER */
+h1 {
+    color: #f4f7f7;
+    border: 2px solid #f4f7f7;
+    border-radius: 2px;
+    padding: 10px 0px 10px 5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
 /* INFO PANE */
 #info-pane {
     border: 5px solid #5da0a2;
     background-color: #aacfd0;
     border-radius: 0 25px 25px 25px;
     width: 25vw;
-    position: absolute;
+    position: fixed;
     top: 80px;
     left: 8px;
 }
@@ -48,8 +59,8 @@ html {
 
 
 
-p {
+/* p {
 color: #f4f7f7;
 color: #aacfd0;
 color: #5da0a2;
-color: #34495e;}
+color: #34495e;} */
