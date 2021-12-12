@@ -1,5 +1,55 @@
+/* GENERAL */
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 /* MAP STYLE */
 #map {
     width: 100%;
     height: 100vh;
 }
+
+.leaflet-control-container 
+{
+    visibility: hidden;
+}
+
+/* INFO PANE */
+#info-pane {
+    border: 5px solid #5da0a2;
+    background-color: #aacfd0;
+    border-radius: 0 25px 25px 25px;
+    width: 25vw;
+    position: absolute;
+    top: 80px;
+    left: 8px;
+}
+
+.mag-dist {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.mag-court {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.sher-info ul li {
+    list-style: none;
+}
+
+
+
+
+
+
+
+p {
+color: #f4f7f7;
+color: #aacfd0;
+color: #5da0a2;
+color: #34495e;}
