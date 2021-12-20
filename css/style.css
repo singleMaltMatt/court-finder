@@ -7,6 +7,11 @@ html {
     box-sizing: inherit;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 /* MAP STYLE */
 #map {
     width: 100%;

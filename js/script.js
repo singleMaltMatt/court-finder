@@ -1,43 +1,52 @@
-// ---------- LINES 2 - 12 IS REFERENCE
-// Creating map options
-let mapOptions = {
-    center: [-26.123377362057052, 28.030939374601676],
-    zoom: 10
-}
-// Creating a map object
-let map = new L.map('map', mapOptions);
-// Creating a Layer object
-let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-// Adding layer to the map
-map.addLayer(layer);
-// ---------- LINES 2 - 12 IS REFERENCE
+// // ---------- LINES 2 - 12 IS REFERENCE
+// // Creating map options
+// let mapOptions = {
+//     center: [-26.123377362057052, 28.030939374601676],
+//     zoom: 10
+// }
+// // Creating a map object
+// let map = new L.map('map', mapOptions);
+// // Creating a Layer object
+// let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+// // Adding layer to the map
+// map.addLayer(layer);
+// // ---------- LINES 2 - 12 IS REFERENCE
 
-// let map = L.map('map').setView([-26.123246375796402, 28.030899710127898], 10);
+// map creator
+const apiKey = "AAPK438d4e0800b049e9bdf27a2a9c6646a56h2Asc4HG9BIG5tTELc53mvrFfJi_5-ryCU0IVKp-uzMRv3b4H6iQaeBw7dZnOCD";
+const basemapEnum = "ArcGIS:Navigation";
 
-// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-// }).addTo(map);
+const map = L.map('map', {
+    minZoom: 2
+}).setView([-26.123377362057052, 28.030939374601676], 13);
 
-// let searchControl = L.esri.Geocoding.geosearch({
-//     position: 'topright',
-//     placeholder: 'Search...',
-//     useMapBounds: false,
-//     providers: [L.esri.Geocoding.arcgisOnlineProvider(
-//         {
-//             apiKey: "AAPK438d4e0800b049e9bdf27a2a9c6646a56h2Asc4HG9BIG5tTELc53mvrFfJi_5-ryCU0IVKp-uzMRv3b4H6iQaeBw7dZnOCD",
-//             nearby: {
-//                 lat: -33.8688,
-//                 lng: 151.2093
-//             }
-//         }
-//     )]
-// }).addTo(map);
+L.esri.Vector.vectorBasemapLayer(basemapEnum, {
+    apiKey: apiKey
+}).addTo(map);
 
-// let results = L.layerGroup().addTo(map);
+// geolocation control
+const searchControl = L.esri.Geocoding.geosearch({
+    position: "topright",
+    placeholder: "Enter an address or place e.g. 1 York St",
+    useMapBounds: false,
+    providers: [L.esri.Geocoding.arcgisOnlineProvider({
+        apikey: apiKey,
+        nearby: {
+            lat: -33.8688,
+            lng: 151.2093
+        },
+    })]
+}).addTo(map);
 
-// searchControl.on('results', function (data) {
-//     results.clearLayers();
-//     for (let i = data.results.length - 1; 1 >= 0; i--) {
-//         results.addLayer(L.marker(data.results[i].latlng));
-//     }
-// });
+const results = L.layerGroup().addTo(map);
+
+searchControl.on("results", (data) => {
+    results.clearLayers();
+    for (let i = data.results.length - 1; i >= 0; i--) {
+        const lngLatString = `${Math.round(data.results[i].latlng.lng * 100000) / 100000}, ${Math.round(data.results[i].latlng.lat * 100000) / 100000}`;
+        const marker = L.marker(data.results[i].latlng);
+        marker.bindPopup(`<b>${lngLatString}</b><p>${data.results[i].properties.LongLabel}</p>`)
+        results.addLayer(marker);
+        marker.openPopup();
+    }
+});
