@@ -18,8 +18,7 @@ body {
     height: 100vh;
 }
 
-.leaflet-control-container 
-{
+.leaflet-control-zoom.leaflet-bar.leaflet-control {
     visibility: hidden;
 }
 

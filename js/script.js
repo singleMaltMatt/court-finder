@@ -27,7 +27,7 @@ L.esri.Vector.vectorBasemapLayer(basemapEnum, {
 // geolocation control
 const searchControl = L.esri.Geocoding.geosearch({
     position: "topright",
-    placeholder: "Enter an address or place e.g. 1 York St",
+    placeholder: "Search...",
     useMapBounds: false,
     providers: [L.esri.Geocoding.arcgisOnlineProvider({
         apikey: apiKey,
