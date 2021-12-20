@@ -18,6 +18,7 @@ body {
     height: 100vh;
 }
 
+/* ZOOM BUTTONS */
 .leaflet-control-zoom.leaflet-bar.leaflet-control {
     visibility: hidden;
 }
@@ -32,52 +33,7 @@ h1 {
     margin-bottom: 5px;
 }
 
-/* INFO PANE */
-#info-pane {
-    border: 5px solid #5da0a2;
-    background-color: #aacfd0;
-    border-radius: 0 25px 25px 25px;
-    width: 25vw;
-    position: fixed;
-    top: 80px;
-    left: 13px;
-}
 
-.mag-dist {
-    text-align: center;
-    text-decoration: underline;
-}
-
-.mag-court {
-    text-align: center;
-    text-decoration: underline;
-}
-
-.sher-info ul li {
-    list-style: none;
-}
-
-/* FORM */
-.geosearch {
-    padding-top: 15px;
-    padding-left: 15px;
-    /* border: 3px solid #5da0a2;
-    border-radius: 0 25px 25px 25px;
-    margin: 0px; */
-}
-input {
-    padding: 5px 5px;
-    border: 3px solid #5da0a2;
-    border-radius: 0px 25px 25px 25px;
-}
-
-form.geosearch button {
-    width: 10%;
-    padding-top: 18px;
-    padding-bottom: 8px;
-    border: 3px solid #5da0a2;
-    border-radius: 0px 25px 25px 25px;
-}
 
 
 

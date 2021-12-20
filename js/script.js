@@ -14,7 +14,8 @@
 
 // map creator
 const apiKey = "AAPK438d4e0800b049e9bdf27a2a9c6646a56h2Asc4HG9BIG5tTELc53mvrFfJi_5-ryCU0IVKp-uzMRv3b4H6iQaeBw7dZnOCD";
-const basemapEnum = "ArcGIS:Navigation";
+const basemapEnum = "ArcGIS:LightGray";
+// ALT const basemapEnum = "OSM:Standard";
 
 const map = L.map('map', {
     minZoom: 2
@@ -50,3 +51,4 @@ searchControl.on("results", (data) => {
         marker.openPopup();
     }
 });
+
