@@ -1,58 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Load Leaflet from CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <!-- ArcGIS Mapping APIs and Location Services Guide
+  Learn more: https://developers.arcgis.com/documentation/mapping-apis-and-services/maps/
+-->
+    <title>ArcGIS Developer Guide: Map (GeoJSON data)</title>
 
-    <!-- Load Esri Leaflet from CDN -->
-    <script src="https://unpkg.com/esri-leaflet@3.0.0/dist/esri-leaflet.js"></script>
-    <script src="https://unpkg.com/esri-leaflet-vector@3.0.0/dist/esri-leaflet-vector.js"></script>
     <style>
-        body {
-            margin: 0;
+        html,
+        body,
+        #viewDiv {
             padding: 0;
-        }
-
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            color: #323232
+            margin: 0;
+            height: 100%;
+            width: 100%;
         }
     </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.21/"></script>
+
+    <script>
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/layers/GeoJSONLayer",
+            "esri/views/MapView"
+
+            //If GeoJSON files are not on the same domain as your website, a CORS enabled server or a proxy is required.
+
+        ], function (esriConfig, Map, GeoJSONLayer, MapView) {
+
+            // Earthquake information to appear when point is clicked
+            const template = {
+                title: "Earthquake Info",
+                content: "Magnitude {mag} {type} hit {place} on {time}",
+                fieldInfos: [
+                    {
+                        fieldName: "time",
+                        format: {
+                            dateFormat: "short-date-short-time"
+                        }
+                    }
+                ]
+            };
+
+            const renderer = {
+                type: "simple",
+                field: "mag",
+                symbol: {
+                    type: "simple-marker",
+                    color: "orange",
+                    outline: {
+                        color: "white"
+                    }
+                },
+                visualVariables: [
+                    {
+                        type: "size",
+                        field: "mag",
+                        stops: [
+                            {
+                                value: 2.5,
+                                size: "4px"
+                            },
+                            {
+                                value: 8,
+                                size: "40px"
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            const geojsonLayer = new GeoJSONLayer({
+                url: "resc/GP_Magisterial_Districts.geojson",
+                copyright: "USGS Earthquakes"
+            });
+
+            esriConfig.apiKey = "AAPK438d4e0800b049e9bdf27a2a9c6646a56h2Asc4HG9BIG5tTELc53mvrFfJi_5-ryCU0IVKp-uzMRv3b4H6iQaeBw7dZnOCD";
+
+            const map = new Map({
+                basemap: "arcgis-light-gray",
+                layers: [geojsonLayer]
+            });
+
+
+            geojsonLayer.popupTemplate = template;
+            geojsonLayer.renderer = renderer;
+
+            // Add the map to a new view
+            const view = new MapView({
+                container: "viewDiv",
+                center: [-168, 46],
+                zoom: 3,
+                map: map,
+                constraints: {
+                    snapToZoom: false
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
-    <div id="map"></div>
-
-    <script>
-        const apiKey = "YOUR-API-KEY";
-        const basemapEnum = "ArcGIS:Streets";
-
-        const map = L.map('map', {
-            minZoom: 2
-        }).setView([34.02, -118.805], 15);
-
-        L.esri.Vector.vectorBasemapLayer(basemapEnum, {
-            apiKey: apiKey
-        }).addTo(map);
-
-        L.esri.Vector.vectorTileLayer("https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer").addTo(map);
-    </script>
+    <div id="viewDiv"></div>
 </body>
 
 </html>

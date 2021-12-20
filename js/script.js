@@ -52,3 +52,9 @@ searchControl.on("results", (data) => {
     }
 });
 
+// GAUTENG GEOJSON LAYER
+const geojsonLayer = new GeoJSONLayer({
+    
+});
+
+map.addLayer(geojsonLayer);
