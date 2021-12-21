@@ -76,7 +76,7 @@
             };
 
             const geojsonLayer = new GeoJSONLayer({
-                url: "resc/GP_Magisterial_Districts.geojson",
+                url: "gp-courts.geojson",
                 copyright: "USGS Earthquakes"
             });
 
@@ -94,8 +94,8 @@
             // Add the map to a new view
             const view = new MapView({
                 container: "viewDiv",
-                center: [-168, 46],
-                zoom: 3,
+                center: [28.030939374601676,-26.123377362057052],
+                zoom: 9,
                 map: map,
                 constraints: {
                     snapToZoom: false
