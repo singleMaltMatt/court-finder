@@ -53,8 +53,7 @@ searchControl.on("results", (data) => {
 });
 
 //|| GAUTENG GEOJSON LAYER
+L.geoJSON(gpDists).addTo(map);
+L.geoJSON(gpCourts).addTo(map);
 
-
-L.geoJSON('geojson/testgp.js').addTo(map)
-
-//|| GAUTENG COURT BLIPS
+//|| 
