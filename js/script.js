@@ -19,8 +19,8 @@ const basemapEnum = "ArcGIS:LightGray";
 
 const map = L.map('map', {
     minZoom: 2
-}).setView([-26.123377362057052, 28.030939374601676], 13);
-
+}).setView([-26.123377362057052, 28.030939374601676], 7);
+// DEFAULT 13
 L.esri.Vector.vectorBasemapLayer(basemapEnum, {
     apiKey: apiKey
 }).addTo(map);
@@ -63,3 +63,11 @@ L.geoJSON(ecDists).addTo(map);
 //|| FREE STATE GEOJSON LATER
 L.geoJSON(fsCourts).addTo(map);
 L.geoJSON(fsDists).addTo(map);
+
+//|| KWAZULU-NATAL GEOJSON LATER
+L.geoJSON(kznCourts).addTo(map);
+L.geoJSON(kznDists).addTo(map);
+
+//|| LIMPOPO GEOJSON LATER
+L.geoJSON(lpCourts).addTo(map);
+L.geoJSON(lpDists).addTo(map);
