@@ -73,8 +73,8 @@ L.geoJSON(lpCourts).addTo(map);
 L.geoJSON(lpDists).addTo(map);
 
 //|| MPUMALANGA GEOJSON LAYER
-L.geoJSON().addTo(map);
-L.geoJSON().addTo(map);
+L.geoJSON(mpCourts).addTo(map);
+L.geoJSON(mpDists).addTo(map);
 
 //|| NORTHERN CAPE GEOJSON LAYER
 L.geoJSON(ncCourts).addTo(map);
