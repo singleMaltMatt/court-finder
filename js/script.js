@@ -71,3 +71,19 @@ L.geoJSON(kznDists).addTo(map);
 //|| LIMPOPO GEOJSON LATER
 L.geoJSON(lpCourts).addTo(map);
 L.geoJSON(lpDists).addTo(map);
+
+//|| MPUMALANGA GEOJSON LAYER
+L.geoJSON().addTo(map);
+L.geoJSON().addTo(map);
+
+//|| NORTHERN CAPE GEOJSON LAYER
+L.geoJSON(ncCourts).addTo(map);
+L.geoJSON(ncDists).addTo(map);
+
+//|| NORTH WEST GEOJSON LAYER
+L.geoJSON().addTo(map);
+L.geoJSON().addTo(map);
+
+//|| WESTERN CAPE GEOJSON LAYER
+L.geoJSON().addTo(map);
+L.geoJSON().addTo(map);
