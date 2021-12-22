@@ -12,7 +12,7 @@
 // map.addLayer(layer);
 // // ---------- LINES 2 - 12 IS REFERENCE
 
-// map creator
+//|| MAP CREATOR
 const apiKey = "AAPK438d4e0800b049e9bdf27a2a9c6646a56h2Asc4HG9BIG5tTELc53mvrFfJi_5-ryCU0IVKp-uzMRv3b4H6iQaeBw7dZnOCD";
 const basemapEnum = "ArcGIS:LightGray";
 // ALT const basemapEnum = "OSM:Standard";
@@ -25,7 +25,7 @@ L.esri.Vector.vectorBasemapLayer(basemapEnum, {
     apiKey: apiKey
 }).addTo(map);
 
-// geolocation control
+//|| GEOLOCATION CONTROL
 const searchControl = L.esri.Geocoding.geosearch({
     position: "topright",
     placeholder: "Search...",
@@ -52,4 +52,9 @@ searchControl.on("results", (data) => {
     }
 });
 
-// GAUTENG GEOJSON LAYER
+//|| GAUTENG GEOJSON LAYER
+
+
+L.geoJSON('geojson/testgp.js').addTo(map)
+
+//|| GAUTENG COURT BLIPS
