@@ -56,4 +56,10 @@ searchControl.on("results", (data) => {
 L.geoJSON(gpDists).addTo(map);
 L.geoJSON(gpCourts).addTo(map);
 
-//|| 
+//|| EASTERN CAPE GEOJSON LAYER
+L.geoJSON(ecCourts).addTo(map);
+L.geoJSON(ecDists).addTo(map);
+
+//|| FREE STATE GEOJSON LATER
+L.geoJSON(fsCourts).addTo(map);
+L.geoJSON(fsDists).addTo(map);
