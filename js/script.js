@@ -81,8 +81,8 @@ L.geoJSON(ncCourts).addTo(map);
 L.geoJSON(ncDists).addTo(map);
 
 //|| NORTH WEST GEOJSON LAYER
-L.geoJSON().addTo(map);
-L.geoJSON().addTo(map);
+L.geoJSON(nwCourts).addTo(map);
+L.geoJSON(nwDists).addTo(map);
 
 //|| WESTERN CAPE GEOJSON LAYER
 L.geoJSON().addTo(map);
