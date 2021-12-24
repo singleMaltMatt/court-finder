@@ -84,6 +84,27 @@ L.geoJSON(ncDists).addTo(map);
 L.geoJSON(nwCourts).addTo(map);
 L.geoJSON(nwDists).addTo(map);
 
-//|| WESTERN CAPE GEOJSON LAYER
+//|| WESTERN CAPE GEOJSON LAYERS
+//|| CITY OF CAPE TOWN MAGISTERIAL DISTRICT
+L.geoJSON(wcDistCapeTown).addTo(map);
+L.geoJSON().addTo(map); // remember blips for courts and split district into sub districts ***
+
+//|| WESTERN CAPE GEOJSON LAYERS
+L.geoJSON().addTo(map);
+L.geoJSON().addTo(map);
+
+//|| WESTERN CAPE GEOJSON LAYERS
+L.geoJSON().addTo(map);
+L.geoJSON().addTo(map);
+
+//|| WESTERN CAPE GEOJSON LAYERS
+L.geoJSON().addTo(map);
+L.geoJSON().addTo(map);
+
+//|| WESTERN CAPE GEOJSON LAYERS
+L.geoJSON().addTo(map);
+L.geoJSON().addTo(map);
+
+//|| WESTERN CAPE GEOJSON LAYERS
 L.geoJSON().addTo(map);
 L.geoJSON().addTo(map);
